@@ -23,7 +23,7 @@ with open(path.join(here, 'requirements.txt'), encoding='utf-8') as f:
 setup(name='mltraining',
       version='0.1.0',
       license='Jaime Polanco Development',
-      #package_dir={'':'gdp_dataeng_functions'},
+      package_dir={'':'mltraining'},
       packages=['mltraining'],
 #       packages=find_packages("mltraining", exclude=["*.test", "*.test.*", "test.*", "test"]) ,
       description='This library allows to create model in with a simple interaction with GCP',
