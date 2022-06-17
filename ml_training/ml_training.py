@@ -141,7 +141,7 @@ class funcion_automl:
         Modelo =  'Árbol de decisión'
         # Creamos el folder donde guardaremos los modelos realizados
         self.folder_()
-        classifier = DecisionTreeClassifier(criterion = "entropy", random_state = 0).fit(X_train, y_train)
+        classifier = DecisionTreeClassifier(criterion = "entropy", random_state = 0).fit(self.X_train, self.y_train)
       
         Resultado= metricas (classifier_model = classifier,
                              X_test=  self.X_test,
@@ -171,7 +171,7 @@ class funcion_automl:
         # Creamos el folder donde guardaremos los modelos realizados
         self.folder_()
         
-        classifier = XGBClassifier().fit(X_train, y_train)
+        classifier = XGBClassifier().fit(self.X_train, self.y_train)
         Resultado= metricas (classifier_model = classifier,
                              X_test=  self.X_test,
                              y_test= self.y_test ,
@@ -359,21 +359,10 @@ def encabezado(tabla_csv, delimitador ):
         pass
         
         
-def optimal_cluster (X):
-    from sklearn.cluster import KMeans
-    wcss = []
-    for i in range(1, 11):
-        kmeans = KMeans(n_clusters = i, init = "k-means++", max_iter = 300, n_init = 10, random_state = 0)
-        kmeans.fit(X)
-        wcss.append(kmeans.inertia_)
 
-    plt.plot(range(1,11), wcss)
-    plt.title("Método del codo")
-    plt.xlabel("Número de Clusters")
-    plt.ylabel("WCSS(k)")
-    plt.show()
 def minmax_norm(df):
     return df #(df - df.min()) / ( df.max() - df.min())
+
 def feature_eng(tabla, X, Y, X_num , X_Cat ):
     label =  tabla[Y]
     features = tabla[ X ]
