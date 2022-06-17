@@ -20,11 +20,11 @@ with open(path.join(here, 'requirements.txt'), encoding='utf-8') as f:
     requirements = f.read().splitlines()
 
 
-setup(name='ml_training',
+setup(name='mltraining',
       version='0.1.0',
       license='Jaime Polanco Development',
       #package_dir={'':'gdp_dataeng_functions'},
-      packages=find_packages("ml_training", exclude=["*.test", "*.test.*", "test.*", "test"]) ,
+      packages=find_packages("mltraining", exclude=["*.test", "*.test.*", "test.*", "test"]) ,
       description='This library allows to create model in with a simple interaction with GCP',
       url='https://github.com/JAPJ182/ML_training_01',
       author='Jaime Polanco',
