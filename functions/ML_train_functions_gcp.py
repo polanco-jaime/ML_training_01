@@ -6,8 +6,8 @@ from google.cloud import bigquery
 # Método del codo para averiguar el número óptimo de clusters
 import warnings
 warnings.filterwarnings("ignore")
-execfile("functions/automl_class.py")
- 
+# execfile("functions/automl_class.py")
+################## 
 def schema_bq(columnas):
     schema_ = []
     for i in range(len(columnas)):
@@ -21,7 +21,7 @@ def schema_bq(columnas):
             schema_.append(schema_line)
             
     return schema_
-
+##################
 def load_simple_file_in_bq(dataset, data, squema, table_in_bq):      
         bq_client = bigquery.Client()
         Data = data.astype(str)
@@ -33,7 +33,7 @@ def load_simple_file_in_bq(dataset, data, squema, table_in_bq):
         job = bq_client.load_table_from_dataframe(Data, table_id , job_config=job_config )
         RESULTADO = job.result()  # Wait for the job to complete. 
         print("La tabla cargo correctamente en {}.{}.{}".format( bq_client.project, dataset, table_in_bq ) )
-
+##################
 def normalize_(string):
             replacements = (
                 (" ","_")    ,("á", "a"),("à", "a"),
@@ -71,8 +71,8 @@ def normalize_(string):
                 string = string.replace(a, b).replace(a.upper(), b.upper()) 
                 #R = re.sub(r"[^a-zA-Z0-9]","",string.upper()) 
             return string.upper()
-
-        
+##################
+##################        
 def normalize_coma(string):
             replacements = (
                 (" ","_")    ,("á", "a"),("à", "a"),
@@ -111,7 +111,7 @@ def normalize_coma(string):
             return string.upper()
 
         
-        
+##################        
 def encabezado(tabla_csv, delimitador ):
     import subprocess as sp
     if delimitador==';':
@@ -124,7 +124,7 @@ def encabezado(tabla_csv, delimitador ):
         return output 
     else:
         pass
-        
+##################        
         
 def optimal_cluster (X):
     from sklearn.cluster import KMeans
@@ -139,8 +139,11 @@ def optimal_cluster (X):
     plt.xlabel("Número de Clusters")
     plt.ylabel("WCSS(k)")
     plt.show()
+    
+##################    
 def minmax_norm(df):
     return df #(df - df.min()) / ( df.max() - df.min())
+################## 
 def feature_eng(tabla, X, Y, X_num , X_Cat ):
     label =  tabla[Y]
     features = tabla[ X ]
@@ -156,7 +159,7 @@ def feature_eng(tabla, X, Y, X_num , X_Cat ):
     train_features, test_features, train_label, test_label = train_test_split(features, label, test_size = 0.25, random_state = 0)
     return  train_features, test_features, train_label, test_label
 
-
+##################
 class load_simple_file_class:
     def __init__(self,
                  path = "" ,
@@ -169,7 +172,7 @@ class load_simple_file_class:
         self.formato_ = path.split('.')[-1].upper()
         self.table_name = path.split('/')[-1].upper().split('.')[0]  
         self.delimit = delimit
-        
+    ##################   ##################  ##################
     def econde_tabla(self): 
         if (self.formato_.upper() == 'CSV') or (self.formato_.upper() == 'TXT'):        
             import chardet
@@ -180,7 +183,7 @@ class load_simple_file_class:
             return result['encoding']
         else:
             pass
-
+    ##################   ##################  ##################
     def delimitador(self):
         if self.delimit == "":
             x = 15
@@ -203,7 +206,7 @@ class load_simple_file_class:
             sep_ = self.delimit
             return sep_  
          
-
+    ##################   ##################  ##################
     def types_dict(self):
         if self.formato_.upper() == 'CSV'  or self.formato_.upper() == 'TXT' :
             pass
@@ -225,7 +228,7 @@ class load_simple_file_class:
             pass
         
        # print('reading parameters have been set');
- 
+     ##################   ##################  ##################
     def read_tables(self):
         self.start = time.time()
         ### 
@@ -250,7 +253,7 @@ class load_simple_file_class:
             return Data
         else:
             pass
-        
+    ##################   ##################  ##################        
     def read_table(self):
         start = time.time()
         def normalize_(string):
@@ -290,7 +293,7 @@ class load_simple_file_class:
                 string = string.replace(a, b).replace(a.upper(), b.upper()) 
                 #R = re.sub(r"[^a-zA-Z0-9]","",string.upper()) 
             return string.upper()
-        
+    ##################   ##################  ##################        
         nombre_columnas = []
         Data = self.read_tables()
          
