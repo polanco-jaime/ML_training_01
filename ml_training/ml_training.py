@@ -3,6 +3,22 @@ import pandas as pd
 import time
 import re
 from google.cloud import bigquery
+import joblib
+import os 
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
+from sklearn.metrics import f1_score
+from sklearn.metrics import roc_auc_score
+####################################################################
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix
+from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from xgboost import XGBClassifier
+####################################################################
 # Método del codo para averiguar el número óptimo de clusters
 import warnings
 
