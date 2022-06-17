@@ -13,5 +13,6 @@ dependencies:
 - numpy==1.18.5
 - tqdm ==4.61.2
 - patool==1.12
+- xgboost==1.6.1
 - scikit-learn
 
