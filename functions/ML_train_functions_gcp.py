@@ -125,21 +125,7 @@ def encabezado(tabla_csv, delimitador ):
     else:
         pass
 ##################        
-        
-def optimal_cluster (X):
-    from sklearn.cluster import KMeans
-    wcss = []
-    for i in range(1, 11):
-        kmeans = KMeans(n_clusters = i, init = "k-means++", max_iter = 300, n_init = 10, random_state = 0)
-        kmeans.fit(X)
-        wcss.append(kmeans.inertia_)
-
-    plt.plot(range(1,11), wcss)
-    plt.title("Método del codo")
-    plt.xlabel("Número de Clusters")
-    plt.ylabel("WCSS(k)")
-    plt.show()
-    
+  
 ##################    
 def minmax_norm(df):
     return df #(df - df.min()) / ( df.max() - df.min())
