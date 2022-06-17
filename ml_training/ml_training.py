@@ -1,5 +1,6 @@
 import chardet
 import pandas as pd
+import numpy as np
 import time
 import re
 from google.cloud import bigquery
